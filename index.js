@@ -3,19 +3,18 @@
 function createLoginTracker(userInfo) {
   let attemptCount = 0;
   const loginAttempt = (passwordAttempt) => {
-    attemptCount++;
+    attemptCount++; // incrementing the number of attempts
     if (attemptCount > 3) {
       return "Account locked due to too many failed login attempts";
     } 
     if (passwordAttempt === userInfo.password) {
-      return "Login successful";
+      return "Login successful"; // when the attempt count is less than or equal 3
     } 
 
-    return `Attempt ${attemptCount}: Login failed`;
+    return `Attempt ${attemptCount}: Login failed`; // when the attempt count is less than or equal to 3 and the passwords don't match
   }
   return loginAttempt;
 }
-
 
 module.exports = {
   ...(typeof createLoginTracker !== 'undefined' && { createLoginTracker })
